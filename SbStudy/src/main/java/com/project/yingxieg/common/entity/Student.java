@@ -1,21 +1,26 @@
-package com.example.demo.entity;
+package com.project.yingxieg.common.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Student {
-    private int SId;
+public class Student implements Serializable {
+
+    private static final long serialVersionUID = -7377495917766506587L;
+
+    private String SId;
     private String Sname;
     private Date Sage;
     private String Ssex;
 
+
     public Student() {
     }
 
-    public int getSId() {
+    public String getSId() {
         return SId;
     }
 
-    public void setSId(int SId) {
+    public void setSId(String SId) {
         this.SId = SId;
     }
 

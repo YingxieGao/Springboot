@@ -1,10 +1,14 @@
-package com.example.demo.controller;
+package com.project.yingxieg.controller;
 
-import com.example.demo.entity.ResultObject;
-import com.example.demo.entity.Student;
-import com.example.demo.service.MultifunctionService;
+import com.project.yingxieg.common.entity.ResultObject;
+import com.project.yingxieg.common.entity.Student;
+import com.project.yingxieg.common.util.common;
+import com.project.yingxieg.service.MultifunctionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
 /**
  * @Author: yingxieg
  * @Description:
@@ -36,8 +40,8 @@ public class MultifuctionController {
      * @param id
      * @return
      */
-    @GetMapping("/get/{id}")
-    public ResultObject getStuById(@PathVariable(value="id") int id)
+    @GetMapping("/get")
+    public ResultObject getStuById(String id)
     {
         ResultObject resultObject = new ResultObject();
         resultObject.setData(multifunctionService.getStuById(id));
@@ -49,9 +53,13 @@ public class MultifuctionController {
      * @param student
      */
     @PostMapping("/add")
-    public void newStudent(Student student)
+    public ResultObject newStudent(Student student)
     {
+        ResultObject resultObject = new ResultObject();
+        String uuid = common.getUUID();
+        student.setSId(uuid);
         multifunctionService.newStudent(student);
+        return resultObject;
     }
 
     /**
@@ -59,21 +67,25 @@ public class MultifuctionController {
      * @param id
      * @param student
      */
-    @PutMapping("update/{id}")
-    public void updataStu(@PathVariable(value = "id") int id, Student student)
+    @PutMapping("update")
+    public ResultObject updataStu(String id, Student student)
     {
+        ResultObject resultObject = new ResultObject();
         student.setSId(id);
         multifunctionService.updateStu(student);
+        return resultObject;
     }
 
     /**
      * 删除学生
      * @param id
      */
-    @DeleteMapping("/delete/{id}")
-    public void deleteStu(@PathVariable(value = "id") int id)
+    @DeleteMapping("/delete")
+    public ResultObject deleteStu(String id)
     {
+        ResultObject resultObject = new ResultObject();
         multifunctionService.deletesStu(id);
+        return resultObject;
     }
 
 }

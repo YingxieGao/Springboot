@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.project.yingxieg.common.entity;
 
 public class ResultObject {
 

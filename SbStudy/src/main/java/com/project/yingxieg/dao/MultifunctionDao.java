@@ -1,6 +1,6 @@
-package com.example.demo.dao;
+package com.project.yingxieg.dao;
 
-import com.example.demo.entity.Student;
+import com.project.yingxieg.common.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface MultifunctionDao {
-    Student getStuById(int id);
+    Student getStuById(String id);
 
     List<Student> showAllStu();
 
@@ -17,5 +17,5 @@ public interface MultifunctionDao {
 
     void updateStu(Student student);
 
-    void deleteStu(int id);
+    void deleteStu(String id);
 }

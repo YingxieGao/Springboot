@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.dao.MultifunctionDao" >
+<mapper namespace="com.project.yingxieg.dao.MultifunctionDao" >
 
-    <select id="getStuById" resultType="com.example.demo.entity.Student">
+    <select id="getStuById" resultType="com.project.yingxieg.common.entity.Student">
         select * from Student
         where SId=#{id}
     </select>
 
-    <select id="showAllStu" resultType="com.example.demo.entity.Student">
+    <select id="showAllStu" resultType="com.project.yingxieg.common.entity.Student">
         select * from Student
     </select>
 
     <insert id="newStudent">
         insert into Student
-        values(null,#{Sname},#{Sage},#{Ssex})
+        values(#{SId},#{Sname},#{Sage},#{Ssex})
     </insert>
 
     <update id="updateStu">
