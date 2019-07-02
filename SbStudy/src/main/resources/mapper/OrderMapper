@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.yingxieg.dao.OrderDao" >
+
+    <insert id="addSeller">
+        insert into seller
+        (name)
+        values (#{name})
+    </insert>
+
+    <delete id="deleteSeller">
+        delete from seller
+        where id={id}
+    </delete>
+
+    <insert id="addGood">
+        insert into good
+        (name, seller, price)
+        values (#{name},#{seller},#{price})
+    </insert>
+
+    <delete id="deleteGood">
+        delete from good
+        where id={id}
+    </delete>
+    
+    <select id="showAllGood" resultType="map">
+        select * from good
+        order by id
+    </select>
+    
+    <insert id="addGoodToCart">
+        insert into shopping_cart
+        (id, good, price)
+        values (#{id},#{good},#{price})
+    </insert>
+
+    <delete id="deleteGoodFromCart">
+        delete from shopping_cart
+        where name=#{name} and id={id}
+    </delete>
+    
+    <select id="showCart" resultType="map">
+        select g.name,g.price
+        from shopping_cart s, good g
+        where s.good=g.id s.id={id}
+        order by name
+    </select>
+    
+    <delete id="checkOut">
+        delete from shopping_cart
+        where id=#{id}
+    </delete>
+
+</mapper>

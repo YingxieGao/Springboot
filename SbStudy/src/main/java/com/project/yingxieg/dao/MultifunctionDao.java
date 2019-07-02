@@ -17,5 +17,5 @@ public interface MultifunctionDao {
 
     void updateStu(Student student);
 
-    void deleteStu(String id);
+    boolean deleteStu(String id);
 }

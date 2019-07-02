@@ -57,8 +57,9 @@ public class MultifuctionController {
     {
         ResultObject resultObject = new ResultObject();
         String uuid = common.getUUID();
-        student.setSId(uuid);
-        multifunctionService.newStudent(student);
+        student.setUuid(uuid);
+        student.setShoppingCart(uuid);
+        resultObject.setData(multifunctionService.newStudent(student));
         return resultObject;
     }
 
@@ -71,7 +72,7 @@ public class MultifuctionController {
     public ResultObject updataStu(String id, Student student)
     {
         ResultObject resultObject = new ResultObject();
-        student.setSId(id);
+        student.setUuid(id);
         multifunctionService.updateStu(student);
         return resultObject;
     }
@@ -84,7 +85,7 @@ public class MultifuctionController {
     public ResultObject deleteStu(String id)
     {
         ResultObject resultObject = new ResultObject();
-        multifunctionService.deletesStu(id);
+        resultObject.setData(multifunctionService.deletesStu(id));
         return resultObject;
     }
 

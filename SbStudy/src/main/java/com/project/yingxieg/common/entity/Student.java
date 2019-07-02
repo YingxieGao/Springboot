@@ -2,59 +2,68 @@ package com.project.yingxieg.common.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Student implements Serializable {
 
     private static final long serialVersionUID = -7377495917766506587L;
 
-    private String SId;
-    private String Sname;
-    private Date Sage;
-    private String Ssex;
+    private String uuid;
+    private String name;
+    private Date age;
+    private String sex;
+    private Timestamp createTime;
+    private String shoppingCart;
 
-
-    public Student() {
+    public String getShoppingCart() {
+        return shoppingCart;
     }
 
-    public String getSId() {
-        return SId;
+    public void setShoppingCart(String shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
-    public void setSId(String SId) {
-        this.SId = SId;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public String getSname() {
-        return Sname;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public void setSname(String sname) {
-        Sname = sname;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public Date getSage() {
-        return Sage;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setSage(Date sage) {
-        Sage = sage;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
-    public String getSsex() {
-        return Ssex;
+    public String getName() {
+        return name;
     }
 
-    public void setSsex(String ssex) {
-        Ssex = ssex;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "SId='" + SId + '\'' +
-                ", Sname='" + Sname + '\'' +
-                ", Sage=" + Sage +
-                ", Ssex='" + Ssex + '\'' +
-                '}';
+    public Date getAge() {
+        return age;
+    }
+
+    public void setAge(Date age) {
+        this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

@@ -4,27 +4,27 @@
 
     <select id="getStuById" resultType="com.project.yingxieg.common.entity.Student">
         select * from Student
-        where SId=#{id}
+        where uuid=#{id}
     </select>
 
     <select id="showAllStu" resultType="com.project.yingxieg.common.entity.Student">
-        select * from Student
+        select * from Student order by name
     </select>
 
     <insert id="newStudent">
-        insert into Student
-        values(#{SId},#{Sname},#{Sage},#{Ssex})
+        insert into Student (uuid,name,age,sex)
+        values(#{uuid},#{name},#{age},#{sex})
     </insert>
 
     <update id="updateStu">
         update Student
-        set Sname=#{Sname},Sage=#{Sage},Ssex=#{Ssex}
-        where SId=#{SId}
+        set name=#{name},age=#{age},sex=#{sex}
+        where uuid=#{uuid}
     </update>
 
     <delete id="deleteStu">
         delete from Student
-        where SId=#{id}
+        where uuid=#{id}
     </delete>
 
 
