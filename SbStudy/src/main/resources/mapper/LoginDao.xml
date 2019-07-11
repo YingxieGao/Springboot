@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.yingxieg.dao.LoginDao" >
+
+    <insert id="signUp" parameterType="com.project.yingxieg.common.entity.User">
+    insert into user
+    (id,username, password,type,uuid)
+    values (null,#{username},#{password},#{type},#{uuid})
+    </insert>
+
+    <select id="checkRepeat" resultType="boolean">
+        select count(1) from user
+        where username=#{username} limit 1
+    </select>
+
+    <select id="login" resultType="boolean">
+        select count(1) from user
+        where (username,password)=(#{username},#{password}) limit 1
+    </select>
+
+    <insert id="createToken">
+        insert into token
+        (userId,username, expireTime, userToken)
+        values (null,#{username},1000000,#{userToken})
+    </insert>
+
+    <delete id="logOut">
+        delete from token
+        where username=#{username}
+    </delete>
+
+    <select id="checkFirst" resultType="boolean">
+        select count(1) from student where student.uuid=#{uuid} limit 1
+        union all
+        select count(1) from teacher where teacher.uuid=#{uuid} limit 1
+        union all
+        select count(1) from seller where seller.uuid=#{uuid} limit 1
+    </select>
+
+
+
+</mapper>

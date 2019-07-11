@@ -1,13 +1,12 @@
 package com.project.yingxieg.controller;
 
+import com.project.yingxieg.common.aspect.CurrentUser;
 import com.project.yingxieg.common.entity.ResultObject;
 import com.project.yingxieg.common.entity.Student;
-import com.project.yingxieg.common.util.common;
+import com.project.yingxieg.common.entity.User;
 import com.project.yingxieg.service.MultifunctionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 /**
  * @Author: yingxieg
@@ -53,10 +52,10 @@ public class MultifuctionController {
      * @param student
      */
     @PostMapping("/add")
-    public ResultObject newStudent(Student student)
+    public ResultObject newStudent(@CurrentUser User user, Student student)
     {
         ResultObject resultObject = new ResultObject();
-        String uuid = common.getUUID();
+        String uuid = user.getUuid();
         student.setUuid(uuid);
         student.setShoppingCart(uuid);
         resultObject.setData(multifunctionService.newStudent(student));

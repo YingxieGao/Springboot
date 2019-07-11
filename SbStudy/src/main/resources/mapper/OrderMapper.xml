@@ -10,7 +10,7 @@
 
     <delete id="deleteSeller">
         delete from seller
-        where id={id}
+        where uuid={id}
     </delete>
 
     <insert id="addGood">

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.yingxieg.common.dao.CommonDao" >
+
+<select id="findByToken" resultType="com.project.yingxieg.common.entity.User">
+    select user.username, user.password, user.type, user.uuid from token
+    left join user on token.username=user.username
+    where token.userToken=#{token}
+
+</select>
+
+
+
+</mapper>
