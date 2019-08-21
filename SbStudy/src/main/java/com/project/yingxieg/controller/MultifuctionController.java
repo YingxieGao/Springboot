@@ -22,6 +22,10 @@ public class MultifuctionController {
     @Autowired
     private MultifunctionService multifunctionService;
 
+    @RequestMapping("/index")
+    public String page(){
+        return "index";
+    }
     /**
      * 查看当先所有学生信息
      * @return
@@ -67,7 +71,7 @@ public class MultifuctionController {
      * @param id
      * @param student
      */
-    @PutMapping("update")
+    @PutMapping("/update")
     public ResultObject updataStu(String id, Student student)
     {
         ResultObject resultObject = new ResultObject();

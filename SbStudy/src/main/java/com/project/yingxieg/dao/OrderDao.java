@@ -24,7 +24,9 @@ public interface OrderDao {
 
     boolean deleteGood(int id);
 
-    List<Map<String, Object>> showAllGood();
+    List<Map<String, Object>> showAllGood(int id);
+
+    List<Map<String, Object>> showAllSellers();
 
     List<Map<String, Object>> showCart(String id);
 

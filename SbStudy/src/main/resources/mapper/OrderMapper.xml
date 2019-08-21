@@ -26,6 +26,7 @@
     
     <select id="showAllGood" resultType="map">
         select * from good
+        where seller=#{id}
         order by id
     </select>
     
@@ -46,7 +47,12 @@
         where s.good=g.id s.id={id}
         order by name
     </select>
-    
+    <select id="showAllSellers" resultType="java.util.Map">
+        select name
+        from seller
+        order by name
+    </select>
+
     <delete id="checkOut">
         delete from shopping_cart
         where id=#{id}
